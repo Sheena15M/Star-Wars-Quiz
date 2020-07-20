@@ -21,23 +21,35 @@ var questions = [
         answer: "Warwick Davis"
     },
     {
-        title: "Who was Luke and Leia's Mom",
-        choices: ["Palpatine", "Padme", "Shmi", "Rei"],
+        title: "What was Luke and Leia's Mom's name",
+        choices: ["Palpatine", "Shmi", "Rei", "Padme"],
         answer: "Padme"
     },
     {
-        title: "Which sith lord killed Qui Gon Jinn",
+        title: "Which sith lord killed Qui Gon Jinn in Star Wars The Phantom Menace",
         choices: ["Darth Vader", "Darth Sidious", "Darth Maul", "Darth Tyranus"],
         answer: "Darth Maul"
 
     },
     {
-        title: "Who created the Star Wars series",
+        title: "Who created the Star Wars saga",
         choices: ["George Lucas", "George Foreman", "George Takei", "George Miller"],
         answer: "George Lucas"
     },
     {
-        title: ""
+        title: "Which famous Puppeteer is the voice of Yoda",
+        choices: ["Jim Henson", "Jerry Nelson", "Caroll Spinney", "Frank Oz"],
+        answer: "Frank Oz"
+    },
+    {
+        title: "True or False Star Wars Collectible coins can be used as real money",
+        choices: ["True", "False"],
+        answer: "True"
+    },
+    {
+        title: "George Lucas made a bet with this famous director before releasing Star Wars A New Hope in 1977",
+        choices: ["Francis Ford Coppola", "Steven Spielberg", "Woody Allen", "Clint Eastwood"],
+        answer: "Steven Spielberg"
     },
 
 ];
@@ -52,8 +64,8 @@ var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
-// Seconds left is 15 seconds per question:
-var secondsLeft = 76;
+// Seconds left is 10 seconds per question:
+var secondsLeft = 100;
 // Holds interval time
 var holdInterval = 0;
 // Holds penalty time
@@ -63,7 +75,7 @@ var ulCreate = document.createElement("ul");
 
 // Triggers timer on button, shows user a display on the screen
 timer.addEventListener("click", function () {
-    // We are checking zero because its originally set to zero
+   
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -114,7 +126,7 @@ function compare(event) {
             createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].answer;
             // Correct condition 
         } else {
-            // Will deduct -5 seconds off secondsLeft for wrong answers
+            // Will deduct -10 seconds off secondsLeft for wrong answers
             secondsLeft = secondsLeft - penalty;
             createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
         }
@@ -208,7 +220,7 @@ function allDone() {
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
             // Travels to final page
-            window.location.replace("./HighScores.html");
+            window.location.replace("./highscore.html");
         }
     });
 
